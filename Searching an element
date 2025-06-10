@@ -1,0 +1,81 @@
+import java.util.*;
+class node{
+    int data;
+    node left;
+    node right;
+}
+public class Main
+{
+    static node root=null;
+    static void levelorder(){
+        Queue<node> q=new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            node t=q.remove();
+            System.out.print(t.data+" ");
+            if(t.left!=null)
+                q.add(t.left);
+            if(t.right!=null)
+                q.add(t.right);
+        }
+    }
+    static void insert(){
+        Scanner s=new Scanner(System.in);
+        Queue<node> q=new LinkedList<>();
+        System.out.println("Enter root value");
+        int x=s.nextInt();
+        node a=new node();
+        a.data=x;
+        root=a;
+        q.add(a);
+        while(!q.isEmpty()){
+            node t=q.remove();
+            System.out.println("Enter left of "+t.data);
+            int x1=s.nextInt();
+            if(x1>=0){
+                node a1=new node();
+                a1.data=x1;
+                t.left=a1;
+                q.add(a1);
+            }
+            System.out.println("Enter right of "+t.data);
+            int x2=s.nextInt();
+            if(x2>=0){
+                node a2=new node();
+                a2.data=x2;
+                t.right=a2;
+                q.add(a2);
+            }
+        }
+    }
+     static boolean search(node root, int key) {
+        if (root == null)
+        return false;
+        Queue<node> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            node t = q.remove();
+            if (t.data == key)
+                return true;
+            if (t.left != null)
+                q.add(t.left);
+            if (t.right != null)
+                q.add(t.right);
+        }
+        return false;
+    }
+    
+        public static void main(String[] args) {
+        insert();
+        System.out.println("Level order traversal is");
+        levelorder();
+         Scanner sc = new Scanner(System.in);
+        System.out.println("\nEnter element to search:");
+        int k= sc.nextInt();
+        if (search(root,k)) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+}
+}
