@@ -62,25 +62,6 @@ public class Main {
             }
         }
     }
-     static void topview() {
-        if (root == null) return;
-        Queue<node> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            int n = q.size();
-            for (int i = 1; i <= n; i++) {
-                node t = q.remove();
-                if (i == 1)
-                    System.out.print(t.data + " ");
-                if (i == n)
-                    System.out.print(t.data + " ");
-                if (t.left != null)
-                    q.add(t.left);
-                if (t.right != null)
-                    q.add(t.right);
-            }
-        }
-     }
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         while (true) {
@@ -94,7 +75,5 @@ public class Main {
         leftview();
         System.out.println("\nRight View:");
         rightview();
-        System.out.println("\nTop View:");
-        topview();
     }
 }
